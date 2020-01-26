@@ -10,5 +10,8 @@ mode=development
 theme=yellow
 pipeline=fast-development
 
+[staging]
+name=fintrack-development
+
 [application]
 name=fintrack-development
