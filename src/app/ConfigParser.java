@@ -16,6 +16,9 @@ public class ConfigParser {
   private HashMap<String, String> config;
 
   public ConfigParser(String fileName) {
+    if (fileName == null) {
+      fileName = "config.txt";
+    }
     p = Paths.get(fileName);
     config = new HashMap<>();
     ReadConfig();
@@ -23,6 +26,7 @@ public class ConfigParser {
 
   private void AddConfig(String prefix, String line) {
     String[] keyValue = line.split("=");
+    // tenary operator;
     String key = prefix.isEmpty() ? keyValue[0] : prefix.concat(".").concat(keyValue[0]);
     String value = keyValue[1];
     config.put(key, value);
@@ -44,7 +48,7 @@ public class ConfigParser {
         }
       }
     } catch (IOException e) {
-      System.err.println(e.getMessage());
+      System.err.println("IOExcetion : " + e.getMessage());
     }
   }
 
